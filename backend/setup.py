@@ -1,0 +1,31 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="ready-set-realtor",
+    version="0.1.0",
+    packages=find_packages(),
+    install_requires=[
+        "fastapi",
+        "uvicorn",
+        "sqlalchemy",
+        "pydantic",
+        "python-jose[cryptography]",
+        "python-multipart",
+        "passlib",
+        "celery",
+        "redis",
+        "psycopg2-binary",
+        "python-dotenv",
+        "requests",
+        "alembic",
+        "supabase",
+        "bcrypt",
+        "google-auth-oauthlib",
+        "google-auth-httplib2",
+        "google-api-python-client",
+        "aiosmtplib",
+        "jinja2",
+        "pandas",
+        "plotly",
+    ],
+)

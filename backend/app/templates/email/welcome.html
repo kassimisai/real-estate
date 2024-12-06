@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Welcome to Ready Set Realtor!</h2>
+<p>Hello {{ user_name }},</p>
+<p>Welcome to Ready Set Realtor! We're excited to have you on board. Our AI-powered platform will help you streamline your real estate business and close more deals.</p>
+
+<h3>Getting Started</h3>
+<ul>
+    <li>Set up your profile</li>
+    <li>Import your leads</li>
+    <li>Connect your calendar</li>
+    <li>Explore our AI features</li>
+</ul>
+
+<p>Click the button below to get started:</p>
+<a href="{{ login_url }}" class="button">Log In Now</a>
+
+<p>If you have any questions, our support team is here to help!</p>
+
+<p>Best regards,<br>The Ready Set Realtor Team</p>
+{% endblock %}

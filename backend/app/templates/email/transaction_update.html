@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Transaction Update</h2>
+<p>There has been an update to your transaction:</p>
+
+<div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;">
+    <h3>Transaction ID: {{ transaction_id }}</h3>
+    
+    {% if update_details.status_change %}
+    <div style="background-color: #e9ecef; padding: 10px; border-radius: 3px; margin: 10px 0;">
+        <p><strong>Status Update:</strong> {{ update_details.status_change.from }} → {{ update_details.status_change.to }}</p>
+    </div>
+    {% endif %}
+
+    {% if update_details.documents %}
+    <div style="margin: 10px 0;">
+        <h4>Document Updates:</h4>
+        <ul>
+            {% for doc in update_details.documents %}
+            <li>{{ doc.title }} - {{ doc.status }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if update_details.deadlines %}
+    <div style="margin: 10px 0;">
+        <h4>Important Deadlines:</h4>
+        <ul>
+            {% for deadline in update_details.deadlines %}
+            <li>{{ deadline.title }} - {{ deadline.date }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+<p>View the full transaction details:</p>
+<a href="{{ transaction_url }}" class="button">View Transaction</a>
+
+<p>Best regards,<br>Ready Set Realtor</p>
+{% endblock %}

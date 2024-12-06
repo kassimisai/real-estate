@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>New Lead Alert!</h2>
+<p>A new lead has been added to your pipeline:</p>
+
+<div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;">
+    <h3>{{ lead_name }}</h3>
+    <ul>
+        {% for key, value in lead_details.items() %}
+        <li><strong>{{ key }}:</strong> {{ value }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<p>Take action now:</p>
+<a href="{{ dashboard_url }}" class="button">View Lead Details</a>
+
+<p>Remember to follow up within the first 5 minutes for the best results!</p>
+
+<p>Best regards,<br>Ready Set Realtor</p>
+{% endblock %}

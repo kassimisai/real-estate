@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Your Performance Report</h2>
+<p>Here's your performance summary for {{ date }}:</p>
+
+<div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;">
+    <h3>Key Metrics</h3>
+    
+    <div style="margin: 15px 0;">
+        <h4>Lead Performance</h4>
+        <ul>
+            <li>Total Leads: {{ report_data.lead_metrics.total_leads }}</li>
+            <li>Conversion Rate: {{ "%.1f"|format(report_data.conversion_rate) }}%</li>
+            {% for source, count in report_data.lead_metrics.leads_by_source.items() %}
+            <li>{{ source }}: {{ count }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div style="margin: 15px 0;">
+        <h4>Transaction Performance</h4>
+        <ul>
+            <li>Total Transactions: {{ report_data.transaction_metrics.total_transactions }}</li>
+            <li>Total Value: ${{ "{:,.2f}"|format(report_data.transaction_metrics.total_value) }}</li>
+            <li>Average Value: ${{ "{:,.2f}"|format(report_data.transaction_metrics.avg_transaction_value) }}</li>
+        </ul>
+    </div>
+
+    {% if report_data.analysis.insights %}
+    <div style="margin: 15px 0;">
+        <h4>Key Insights</h4>
+        <ul>
+            {% for insight in report_data.analysis.insights %}
+            <li>{{ insight.message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if report_data.analysis.recommendations %}
+    <div style="margin: 15px 0;">
+        <h4>Recommendations</h4>
+        <ul>
+            {% for rec in report_data.analysis.recommendations %}
+            <li>{{ rec }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+<p>View detailed analytics on your dashboard:</p>
+<a href="{{ dashboard_url }}" class="button">View Analytics Dashboard</a>
+
+<p>Best regards,<br>Ready Set Realtor</p>
+{% endblock %}
